@@ -51,6 +51,6 @@ supermoto.Serve(w, nil, []string{"views/base.html", "views/sites.html"}, nil)
 ## ToDo
 - Middleware chain
 - Session based authentication
-- Better 500 handling when templates fail
-- Is 
+- Better handling when templates fail (Currently sends 500 to user)
+- Is the logger really needed in the templates and database? nope
 - Example codebase? With recommended file structure?
