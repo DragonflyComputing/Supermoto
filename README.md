@@ -1,6 +1,10 @@
 # Supermoto
 Tools for building websites with Go and PostgreSQL
 
+Supermoto is a small collection of Go functions for web development with html templates. It exists because I seem to copy these functions into every new project. It is intentionally minimal, no abstractions, no magic, no framework. Made to work with the standard library router.
+
+If you are building something small and want to stay close to the standard library, it might be useful. If you are on a large team or need something feature-rich you should probably look elsewhere.
+
 
 ## Install
 ```
@@ -8,10 +12,6 @@ go get github.com/Dragonfly-Computing/Supermoto@v1.0.0
 ```
 
 ## Usage
-Supermoto is a small collection of Go functions for web development with html templates. It exists because I seem to copy these functions into every new project. It is intentionally minimal, no abstractions, no magic, no framework. Made to work with the standard library router.
-
-If you are building something small and want to stay close to the standard library, it might be useful. If you are on a large team or need something feature-rich you should probably look elsewhere.
-
 
 ### database.go
 Opens a pgx connection pool to PostgreSQL and verifies the connection with a ping.
@@ -51,4 +51,6 @@ supermoto.Serve(w, nil, []string{"views/base.html", "views/sites.html"}, nil)
 ## ToDo
 - Middleware chain
 - Session based authentication
+- Better 500 handling when templates fail
+- Is 
 - Example codebase? With recommended file structure?
