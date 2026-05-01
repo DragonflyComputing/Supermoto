@@ -53,7 +53,7 @@ supermoto.Serve(w, map[string]any{"Name": "Robert Robertson", "Studio": "AdHoc"}
 
 ## Notes
 - Everything is written to return an error rather than making assumptions and continuing.
-
+- The name Supermoto comes from the fast/versatile/compact/durable/cheap type of motorcycle. They are a lot of fun to ride :)
 
 ## ToDo
 - Middleware chain
