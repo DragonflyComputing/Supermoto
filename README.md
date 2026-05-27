@@ -91,5 +91,7 @@ func auth(next http.Handler) http.Handler {
 
 ## ToDo
 - Session based authentication
-- Better handling when templates fail (Currently sends 500 to user)
 - Example codebase? With recommended file structure?
+
+## v2.0.0
+- Use a package-level `SetLogger(*log.Logger)`?

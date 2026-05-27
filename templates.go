@@ -2,6 +2,7 @@ package supermoto
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 	"path/filepath"
 	"time"
@@ -22,12 +23,14 @@ func Serve(w http.ResponseWriter, data any, templatePaths []string) {
 	t := template.New("").Funcs(funcMap)
 	t, err := t.ParseFiles(templatePaths...)
 	if err != nil {
+		log.Printf("Error parsing templates: %v", err)
 		http.Error(w, "Error parsing templates", http.StatusInternalServerError)
 		return
 	}
 
 	templateName := filepath.Base(templatePaths[0])
 	if err = t.ExecuteTemplate(w, templateName, data); err != nil {
+		log.Printf("Error executing template %q: %v", templateName, err)
 		http.Error(w, "Error executing templates", http.StatusInternalServerError)
 		return
 	}
