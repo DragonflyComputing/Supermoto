@@ -1,5 +1,5 @@
 # Supermoto
-Tools for building websites with Go and PostgreSQL
+Tools for building Hypermedia-driven websites with Go and PostgreSQL
 
 Supermoto is a small collection of Go functions for web development with html templates. It exists because I seem to copy these functions into every new project. It is intentionally minimal, no abstractions, no magic, no framework. Made to work with the standard library router.
 
@@ -51,12 +51,45 @@ supermoto.Serve(w, map[string]any{"Name": "Robert Robertson", "Studio": "AdHoc"}
 ```
 
 
+### middleware.go
+Register middleware once, then wrap your mux before passing it to `http.ListenAndServe`. Middleware executes in the order it is added.
+
+```go
+mux := http.NewServeMux()
+mux.HandleFunc("/", homeHandler)
+mux.HandleFunc("/example", exampleHandler)
+
+mw := supermoto.NewMiddleware()
+mw.Add(supermoto.Timer(nil))
+mw.Add(auth)
+
+http.ListenAndServe(":8080", mw.Wrap(mux))
+```
+
+`Timer` is a built-in middleware example that logs the method, path, and how long each request took:
+
+```go
+mw.Add(supermoto.Timer(nil))
+// 2025/07/15 10:32:01 GET /dashboard took 4.231ms
+```
+
+Custom middleware follows the standard Go signature:
+
+```go
+func auth(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        // check auth, then...
+        next.ServeHTTP(w, r)
+    })
+}
+```
+
+
 ## Notes
 - Everything is written to return an error rather than making assumptions and continuing.
 - The name Supermoto comes from the fast/versatile/compact/durable/cheap type of motorcycle. They are a lot of fun to ride :)
 
 ## ToDo
-- Middleware chain
 - Session based authentication
 - Better handling when templates fail (Currently sends 500 to user)
 - Example codebase? With recommended file structure?
