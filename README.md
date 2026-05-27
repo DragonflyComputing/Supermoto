@@ -1,7 +1,7 @@
 # Supermoto
 Tools for building Hypermedia-driven websites with Go and PostgreSQL
 
-Supermoto is a small collection of Go functions for web development with html templates. It exists because I seem to copy these functions into every new project. It is intentionally minimal, no abstractions, no magic, no framework. Made to work with the standard library router.
+Supermoto is a small collection of Go functions for web development with html templates. It exists because I seem to copy these functions into every new project. It is intentionally minimal, no abstractions, no magic, no framework. Made to work with the standard library router and Hypermedia libraries like [HTMX](https://htmx.org/) and [Datastar](https://data-star.dev/).
 
 If you are building something small and want to stay close to the standard library, it might be useful. If you are on a large team or need something feature-rich you should probably look elsewhere.
 
