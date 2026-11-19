@@ -1,14 +1,16 @@
 # Supermoto
-Tools for building Hypermedia-driven websites with Go and PostgreSQL
+Tools for building Hypermedia-driven websites with Go and SQLite
 
-Supermoto is a small collection of Go functions for web development with html templates. It exists because I seem to copy these functions into every new project. It is intentionally minimal, no abstractions, no magic, no framework. Made to work with the standard library router and Hypermedia libraries like [HTMX](https://htmx.org/) and [Datastar](https://data-star.dev/).
 
+TODO REWRITE THIS SECTION
+--Supermoto is a small collection of Go functions for web development with html templates. It exists because I seem to copy these functions into every new project. It is intentionally minimal, no abstractions, no magic, no framework.-- Made to work with the standard library router and Hypermedia libraries like [HTMX](https://htmx.org/) and [Datastar](https://data-star.dev/).
 If you are building something small and want to stay close to the standard library, it might be useful. If you are on a large team or need something feature-rich you should probably look elsewhere.
 
+This framework is for small to medium websites. [SQLite recommends a conservative upper bound of 100K hits/day](https://sqlite.org/whentouse.html).
 
 ## Install
 ```
-go get github.com/Dragonfly-Computing/Supermoto@v1
+go get github.com/DragonflyComputing/Supermoto@v1
 ```
 
 ## Usage
@@ -94,4 +96,18 @@ func auth(next http.Handler) http.Handler {
 - Example codebase? With recommended file structure?
 
 ## v2.0.0
-- Use a package-level `SetLogger(*log.Logger)`?
+- Use a package-level `SetLogger(*log.Logger)`
+- SQLite only
+- SQLC-like generation
+- Go embed for prod? So a dev mode too?
+
+/migrations (Defines the schema and updates over time)
+/queries ()
+/generated - generated db things go here?
+/static
+/views
+
+
+/state (The folder that should persist on the server) Add this folder to the gitign
+/state/db.sqlite3 (SQLite DB)
+/stat/media (files uploaded)
